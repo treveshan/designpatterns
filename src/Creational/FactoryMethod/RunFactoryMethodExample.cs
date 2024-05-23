@@ -14,29 +14,40 @@ public class RunFactoryMethodExample
         //Disadvantages
         // Can introduce complexity with many subclasses
         // Overhead in creating multiple classes
-
-        Console.WriteLine("Enter the type of insurance policy (Health, Life, Vehicle):");
-        var policyType = Console.ReadLine();
-
-        IPolicyCreator creator;
-
-        switch (policyType)
+        var exit = false;
+        while (!exit)
         {
-            case "Health":
-                creator = new HealthPolicyCreator();
-                break;
-            case "Life":
-                creator = new LifePolicyCreator();
-                break;
-            case "Vehicle":
-                creator = new VehiclePolicyCreator();
-                break;
-            default:
-                Console.WriteLine("Invalid policy type.");
-                return;
+            Console.WriteLine("Enter the type of insurance policy (Health, Life, Vehicle) or Exit:");
+            var policyType = Console.ReadLine();
+
+            IPolicyCreator creator = null
+                ;
+
+            switch (policyType)
+            {
+                case "Health":
+                    creator = new HealthPolicyCreator();
+                    break;
+                case "Life":
+                    creator = new LifePolicyCreator();
+                    break;
+                case "Vehicle":
+                    creator = new VehiclePolicyCreator();
+                    break;
+                case "Exit":
+                    exit = true;
+                    return;
+                default:
+                    Console.WriteLine("Invalid policy type.");
+                    break;
+            }
+
+            if (creator is not null)
+            {
+                IPolicy policy = creator.CreatePolicy();
+                Console.WriteLine($"Created policy type: {policy.GetPolicyType()}");
+            }
         }
 
-        IPolicy policy = creator.CreatePolicy();
-        Console.WriteLine($"Created policy type: {policy.GetPolicyType()}");
     }
 }
