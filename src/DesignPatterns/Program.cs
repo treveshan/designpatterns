@@ -1,5 +1,6 @@
 ﻿
 using DesignPatterns.Creational.FactoryMethod;
+using DesignPatterns.Utils.Display;
 using Spectre.Console;
 
 
@@ -9,7 +10,7 @@ MainTitle();
 AnsiConsole.Status()
     .Start("Loading...", ctx =>
     {
-    
+
         AnsiConsole.MarkupLine("Loading...");
         Thread.Sleep(1500);
 
@@ -39,10 +40,7 @@ while (!exit)
     switch (choice)
     {
         case "Factory Method":
-
-            var runFactoryMethodExample = new RunFactoryMethodExample();
-            runFactoryMethodExample.Run();
-
+            RunFactoryMethod();
             break;
         case "Exit":
             exit = true;
@@ -51,6 +49,7 @@ while (!exit)
             AnsiConsole.Markup("[red]Invalid option, please try again.[/]");
             break;
     }
+
 }
 
 AnsiConsole.Markup("[green]See you soon. Goodbye![/]");
@@ -62,3 +61,24 @@ void MainTitle()
             .Centered()
             .Color(Color.Cyan1));
 }
+
+void RunFactoryMethod()
+{
+    var runFactoryMethodExample = new FactoryMethod(new ConsoleOutput());
+    var exit = false;
+    while (!exit)
+    {
+        Console.WriteLine("Enter the type of insurance policy (Health, Life, Vehicle) or Exit:");
+        var policyType = Console.ReadLine();
+        if (!string.IsNullOrEmpty(policyType))
+        {
+            if (policyType.ToLower() == "exit")
+            {
+                exit = true;
+                break;
+            }
+            runFactoryMethodExample.Run(policyType);
+        }
+    }
+}
+
