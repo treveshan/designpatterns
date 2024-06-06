@@ -3,6 +3,7 @@ using DesignPatterns.Creational.AbstractFactory;
 using DesignPatterns.Creational.Builder;
 using DesignPatterns.Creational.FactoryMethod;
 using DesignPatterns.Creational.Prototype;
+using DesignPatterns.Creational.Singleton;
 using DesignPatterns.Utils.Display;
 using Spectre.Console;
 
@@ -39,7 +40,7 @@ while (!exit)
             .Title("Please choose pattern to run:")
             .PageSize(10)
             .AddChoices(new[] {
-                "Factory Method","Abstract Factory","Builder","Prototype", "Exit"
+                "Factory Method","Abstract Factory","Builder","Prototype","Singleton", "Exit"
             }));
 
     switch (choice)
@@ -55,6 +56,9 @@ while (!exit)
             break;
         case "Prototype":
             RunPrototypeFactory();
+            break;
+        case "Singleton":
+            RunSingletonFactory();
             break;
         case "Exit":
             exit = true;
@@ -170,6 +174,30 @@ void RunPrototypeFactory()
                 break;
             }
             prototype.Run();
+        }
+    }
+}
+void RunSingletonFactory()
+{
+    var singleton = new Singleton(new ConsoleOutput());
+    var exit = false;
+    while (!exit)
+    {
+        var option = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+                .Title("Please choose option:")
+                .PageSize(10)
+                .AddChoices(new[] {
+                    "Start", "Exit"
+                }));
+        if (!string.IsNullOrEmpty(option))
+        {
+            if (option.ToLower() == "exit")
+            {
+                exit = true;
+                break;
+            }
+            singleton.Run();
         }
     }
 }

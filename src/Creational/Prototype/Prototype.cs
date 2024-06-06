@@ -16,7 +16,7 @@ public class Prototype
     public void Run()
     {
 
-        var originalPolicy = new DesignPatterns.Creational.Prototype.InsurancePolicy()
+        var originalPolicy = new InsurancePolicy()
         {
             PolicyType = "Comprehensive",
             Premium = 1500.00,

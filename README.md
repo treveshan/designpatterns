@@ -16,7 +16,7 @@ This project demonstrates various design patterns implemented in C#. Design patt
 ## Design Patterns Implemented
 
 1. **Creational Patterns**
-   - [ ] Singleton
+   - [X] Singleton
    - [X] Factory Method
    - [X] Abstract Factory
    - [X] Builder
