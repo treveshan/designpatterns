@@ -34,7 +34,7 @@ while (!exit)
             .Title("Please choose pattern to run:")
             .PageSize(10)
             .AddChoices(new[] {
-                "Factory Method","Abstract Factory", "Exit"
+                "Factory Method","Abstract Factory","Builder", "Exit"
             }));
 
     switch (choice)
@@ -44,6 +44,9 @@ while (!exit)
             break;
         case "Abstract Factory":
             RunAbstractFactory();
+            break;
+        case "Builder":
+            RunBuilderFactory();
             break;
         case "Exit":
             exit = true;
@@ -101,6 +104,30 @@ void RunAbstractFactory()
                 .PageSize(10)
                 .AddChoices(new[] {
                     "Individual","Corporate", "Exit"
+                }));
+        if (!string.IsNullOrEmpty(option))
+        {
+            if (option.ToLower() == "exit")
+            {
+                exit = true;
+                break;
+            }
+            abstractFactory.Run(option);
+        }
+    }
+}
+void RunBuilderFactory()
+{
+    var abstractFactory = new Builder(new ConsoleOutput());
+    var exit = false;
+    while (!exit)
+    {
+        var option = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+                .Title("Please choose type of insurance policy:")
+                .PageSize(10)
+                .AddChoices(new[] {
+                    "Comprehensive","Basic", "Exit"
                 }));
         if (!string.IsNullOrEmpty(option))
         {
