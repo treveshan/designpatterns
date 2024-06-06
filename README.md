@@ -19,7 +19,7 @@ This project demonstrates various design patterns implemented in C#. Design patt
    - [ ] Singleton
    - [X] Factory Method
    - [X] Abstract Factory
-   - [ ] Builder
+   - [X] Builder
    - [ ] Prototype
 
 2. **Structural Patterns**
