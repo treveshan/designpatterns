@@ -1,20 +1,6 @@
-﻿using DesignPatterns.Creational.FactoryMethod.PolicyCreators;
-using DesignPatterns.Utils.Display;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Diagnostics.Contracts;
-using System.Diagnostics.Metrics;
-using System.IO;
-using System.Linq.Expressions;
-using System.Net.NetworkInformation;
-using System.Numerics;
-using System.Reflection.Emit;
-using System.Runtime.Intrinsics.X86;
-using System.Security.Cryptography;
-using System.Threading.Channels;
-using System;
-using DesignPatterns.Creational.Builder;
+﻿using DesignPatterns.Utils.Display;
 
-namespace DesignPatterns.Creational.FactoryMethod;
+namespace DesignPatterns.Creational.Builder;
 
 public class Builder
 {

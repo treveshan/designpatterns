@@ -1,5 +1,8 @@
 ﻿
+using DesignPatterns.Creational.AbstractFactory;
+using DesignPatterns.Creational.Builder;
 using DesignPatterns.Creational.FactoryMethod;
+using DesignPatterns.Creational.Prototype;
 using DesignPatterns.Utils.Display;
 using Spectre.Console;
 
@@ -10,8 +13,6 @@ MainTitle();
 AnsiConsole.Status()
     .Start("Loading...", ctx =>
     {
-
-        AnsiConsole.MarkupLine("Loading...");
         Thread.Sleep(1500);
 
         ctx.Status("TTD Consulting");
@@ -29,12 +30,16 @@ while (!exit)
     Console.Clear();
 
     MainTitle();
+    var rule = new Rule("[red]Creational[/]");
+    rule.Justification = Justify.Center;
+    AnsiConsole.Write(rule);
+
     var choice = AnsiConsole.Prompt(
         new SelectionPrompt<string>()
             .Title("Please choose pattern to run:")
             .PageSize(10)
             .AddChoices(new[] {
-                "Factory Method","Abstract Factory","Builder", "Exit"
+                "Factory Method","Abstract Factory","Builder","Prototype", "Exit"
             }));
 
     switch (choice)
@@ -47,6 +52,9 @@ while (!exit)
             break;
         case "Builder":
             RunBuilderFactory();
+            break;
+        case "Prototype":
+            RunPrototypeFactory();
             break;
         case "Exit":
             exit = true;
@@ -118,7 +126,7 @@ void RunAbstractFactory()
 }
 void RunBuilderFactory()
 {
-    var abstractFactory = new Builder(new ConsoleOutput());
+    var builder = new Builder(new ConsoleOutput());
     var exit = false;
     while (!exit)
     {
@@ -136,7 +144,32 @@ void RunBuilderFactory()
                 exit = true;
                 break;
             }
-            abstractFactory.Run(option);
+            builder.Run(option);
+        }
+    }
+}
+
+void RunPrototypeFactory()
+{
+    var prototype = new Prototype(new ConsoleOutput());
+    var exit = false;
+    while (!exit)
+    {
+        var option = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+                .Title("Please choose option:")
+                .PageSize(10)
+                .AddChoices(new[] {
+                    "Start", "Exit"
+                }));
+        if (!string.IsNullOrEmpty(option))
+        {
+            if (option.ToLower() == "exit")
+            {
+                exit = true;
+                break;
+            }
+            prototype.Run();
         }
     }
 }

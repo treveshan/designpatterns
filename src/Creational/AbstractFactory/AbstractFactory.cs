@@ -2,10 +2,9 @@
 using DesignPatterns.Creational.AbstractFactory.PolicyTypes.Car;
 using DesignPatterns.Creational.AbstractFactory.PolicyTypes.Health;
 using DesignPatterns.Creational.AbstractFactory.PolicyTypes.Home;
-using DesignPatterns.Creational.FactoryMethod.PolicyCreators;
 using DesignPatterns.Utils.Display;
 
-namespace DesignPatterns.Creational.FactoryMethod;
+namespace DesignPatterns.Creational.AbstractFactory;
 
 public class AbstractFactory
 {

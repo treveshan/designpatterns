@@ -68,9 +68,9 @@ namespace DesignPatterns.Creational.Tests.AbstractFactory
                 capturedOutput.Should().BeEquivalentTo(expected);
             }
 
-            private Creational.FactoryMethod.AbstractFactory CreateAbstractFactory(IOutput output)
+            private Creational.AbstractFactory.AbstractFactory CreateAbstractFactory(IOutput output)
             {
-                return new Creational.FactoryMethod.AbstractFactory(output);
+                return new Creational.AbstractFactory.AbstractFactory(output);
             }
         }
 
