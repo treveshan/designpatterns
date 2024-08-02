@@ -4,6 +4,7 @@ using DesignPatterns.Creational.Builder;
 using DesignPatterns.Creational.FactoryMethod;
 using DesignPatterns.Creational.Prototype;
 using DesignPatterns.Creational.Singleton;
+using DesignPatterns.Structural.Adapter;
 using DesignPatterns.Utils.Display;
 using Spectre.Console;
 
@@ -31,16 +32,16 @@ while (!exit)
     Console.Clear();
 
     MainTitle();
-    var rule = new Rule("[red]Creational[/]");
-    rule.Justification = Justify.Center;
-    AnsiConsole.Write(rule);
+    //var rule = new Rule("[red]Creational[/]");
+    //rule.Justification = Justify.Center;
+    //AnsiConsole.Write(rule);
 
     var choice = AnsiConsole.Prompt(
         new SelectionPrompt<string>()
             .Title("Please choose pattern to run:")
             .PageSize(10)
             .AddChoices(new[] {
-                "Factory Method","Abstract Factory","Builder","Prototype","Singleton", "Exit"
+                "Factory Method","Abstract Factory","Builder","Prototype","Singleton","Adapter", "Exit"
             }));
 
     switch (choice)
@@ -59,6 +60,9 @@ while (!exit)
             break;
         case "Singleton":
             RunSingletonFactory();
+            break;
+        case "Adapter":
+            RunAdapterFactory();
             break;
         case "Exit":
             exit = true;
@@ -198,6 +202,30 @@ void RunSingletonFactory()
                 break;
             }
             singleton.Run();
+        }
+    }
+}
+void RunAdapterFactory()
+{
+    var adapter = new Adapter(new ConsoleOutput());
+    var exit = false;
+    while (!exit)
+    {
+        var option = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+                .Title("Please choose option:")
+                .PageSize(10)
+                .AddChoices(new[] {
+                    "Start", "Exit"
+                }));
+        if (!string.IsNullOrEmpty(option))
+        {
+            if (option.ToLower() == "exit")
+            {
+                exit = true;
+                break;
+            }
+            adapter.Run();
         }
     }
 }

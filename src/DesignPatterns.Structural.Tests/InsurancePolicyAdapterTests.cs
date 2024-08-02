@@ -1,4 +1,5 @@
 using DesignPatterns.Structural.Adapter;
+using FluentAssertions;
 
 namespace DesignPatterns.Structural.Tests
 {
