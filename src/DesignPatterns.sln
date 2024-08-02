@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns", "DesignPat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Creational", "Creational\DesignPatterns.Creational.csproj", "{D86663A4-3188-4C36-B0D2-A39EFF11F3B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Creational.Tests", "DesignPatterns.Creational.Tests\DesignPatterns.Creational.Tests.csproj", "{911DA882-FAD6-4E4E-A06B-BEE33614CB49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Creational.Tests", "DesignPatterns.Creational.Tests\DesignPatterns.Creational.Tests.csproj", "{911DA882-FAD6-4E4E-A06B-BEE33614CB49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Utils", "DesignPatterns.Utils\DesignPatterns.Utils.csproj", "{E7F7EA23-4F09-4D69-912C-B455678F21E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Utils", "DesignPatterns.Utils\DesignPatterns.Utils.csproj", "{E7F7EA23-4F09-4D69-912C-B455678F21E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Structural", "DesignPatterns.Adapter\DesignPatterns.Structural.csproj", "{E6BD8BFE-A473-4969-AAEC-AE47424E2E9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Structural.Tests", "DesignPatterns.Structural.Tests\DesignPatterns.Structural.Tests.csproj", "{A139D247-4150-49D8-B4C8-DF764A0733FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{E7F7EA23-4F09-4D69-912C-B455678F21E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7F7EA23-4F09-4D69-912C-B455678F21E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7F7EA23-4F09-4D69-912C-B455678F21E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6BD8BFE-A473-4969-AAEC-AE47424E2E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6BD8BFE-A473-4969-AAEC-AE47424E2E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6BD8BFE-A473-4969-AAEC-AE47424E2E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6BD8BFE-A473-4969-AAEC-AE47424E2E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A139D247-4150-49D8-B4C8-DF764A0733FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A139D247-4150-49D8-B4C8-DF764A0733FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A139D247-4150-49D8-B4C8-DF764A0733FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A139D247-4150-49D8-B4C8-DF764A0733FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
