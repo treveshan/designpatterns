@@ -24,7 +24,7 @@ This project demonstrates various design patterns implemented in C#. Design patt
 
 2. **Structural Patterns**
    - [X] Adapter
-   - [ ] Bridge
+   - [X] Bridge
    - [ ] Composite
    - [ ] Decorator
    - [ ] Facade

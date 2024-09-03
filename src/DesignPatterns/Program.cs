@@ -5,6 +5,7 @@ using DesignPatterns.Creational.FactoryMethod;
 using DesignPatterns.Creational.Prototype;
 using DesignPatterns.Creational.Singleton;
 using DesignPatterns.Structural.Adapter;
+using DesignPatterns.Structural.Bridge;
 using DesignPatterns.Utils.Display;
 using Spectre.Console;
 
@@ -63,6 +64,9 @@ while (!exit)
             break;
         case "Adapter":
             RunAdapterFactory();
+            break;
+        case "Bridge":
+            RunBridgeFactory();
             break;
         case "Exit":
             exit = true;
@@ -226,6 +230,30 @@ void RunAdapterFactory()
                 break;
             }
             adapter.Run();
+        }
+    }
+}
+void RunBridgeFactory()
+{
+    var bridge = new Bridge(new ConsoleOutput());
+    var exit = false;
+    while (!exit)
+    {
+        var option = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+                .Title("Please choose option:")
+                .PageSize(10)
+                .AddChoices(new[] {
+                    "Start", "Exit"
+                }));
+        if (!string.IsNullOrEmpty(option))
+        {
+            if (option.ToLower() == "exit")
+            {
+                exit = true;
+                break;
+            }
+            bridge.Run();
         }
     }
 }
