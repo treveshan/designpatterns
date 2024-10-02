@@ -57,4 +57,5 @@ public class FlyweightPatternTests
             details2.Should().Be("Policy No: P123457, Customer: Trev Doe, Type: Health, Coverage: Full Coverage");
         }
     }
+
 }
