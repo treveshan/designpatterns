@@ -1,10 +1,8 @@
-﻿
-using DesignPatterns.Creational.Builder;
-using DesignPatterns.Utils.Display;
+﻿using DesignPatterns.Utils.Display;
 
 namespace DesignPatterns.Creational.Prototype;
 
-public class Prototype
+public class Prototype 
 {
     private readonly IOutput _output;
 
@@ -13,7 +11,7 @@ public class Prototype
         _output = output;
     }
 
-    public void Run()
+    public void Run(string policyType)
     {
 
         var originalPolicy = new InsurancePolicy()

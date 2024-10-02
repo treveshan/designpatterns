@@ -3,7 +3,7 @@ using DesignPatterns.Utils.Display;
 
 namespace DesignPatterns.Creational.FactoryMethod;
 
-public class FactoryMethod
+public class FactoryMethod 
 {
     private readonly IOutput _output;
 

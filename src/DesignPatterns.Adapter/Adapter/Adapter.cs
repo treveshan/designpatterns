@@ -7,7 +7,7 @@ using DesignPatterns.Utils.Display;
 
 namespace DesignPatterns.Structural.Adapter
 {
-    public class Adapter
+    public class Adapter 
     {
         private readonly IOutput _output;
 

@@ -3,7 +3,7 @@ using DesignPatterns.Utils.Display;
 
 namespace DesignPatterns.Structural.Bridge
 {
-    public class Bridge
+    public class Bridge 
     {
         private readonly IOutput _output;
 

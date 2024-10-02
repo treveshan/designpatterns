@@ -1,4 +1,5 @@
-﻿using DesignPatterns.Utils.Display;
+﻿using DesignPatterns.Creational.FactoryMethod;
+using DesignPatterns.Utils.Display;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace DesignPatterns.Creational.Singleton
             _output = output;
         }
 
-        public void Run()
+        public void Run(string policyType)
         {
             // Access the singleton instance
             InsurancePolicySingleton policy1 = InsurancePolicySingleton.Instance;

@@ -2,6 +2,7 @@
 using DesignPatterns.Creational.AbstractFactory.PolicyTypes.Car;
 using DesignPatterns.Creational.AbstractFactory.PolicyTypes.Health;
 using DesignPatterns.Creational.AbstractFactory.PolicyTypes.Home;
+using DesignPatterns.Creational.FactoryMethod;
 using DesignPatterns.Utils.Display;
 
 namespace DesignPatterns.Creational.AbstractFactory;

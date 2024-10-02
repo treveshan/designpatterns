@@ -1,4 +1,5 @@
-﻿using DesignPatterns.Utils.Display;
+﻿using DesignPatterns.Creational.FactoryMethod;
+using DesignPatterns.Utils.Display;
 
 namespace DesignPatterns.Creational.Builder;
 
@@ -51,7 +52,7 @@ public class Builder
         //5. **Learning Curve**:
         //   - For developers unfamiliar with design patterns, understanding and implementing the Builder pattern might require a learning curve, adding to the initial development time.
 
-        //### When to Use the Builder Pattern
+        //### When to Use the Builder IPattern
 
         //- **Complex Construction Logic**: When the construction of an object involves many steps, and the object has many configurations.
         //- **Immutability**: When you need to create immutable objects and want to provide a clear and concise way to construct them.

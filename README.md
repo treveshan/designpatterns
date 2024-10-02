@@ -28,7 +28,7 @@ This project demonstrates various design patterns implemented in C#. Design patt
    - [ ] Composite
    - [ ] Decorator
    - [ ] Facade
-   - [ ] Flyweight
+   - [X] Flyweight
    - [ ] Proxy
 
 3. **Behavioral Patterns**

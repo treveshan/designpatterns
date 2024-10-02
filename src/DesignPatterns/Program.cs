@@ -1,85 +1,90 @@
-﻿
-using DesignPatterns.Creational.AbstractFactory;
+﻿using DesignPatterns.Creational.AbstractFactory;
 using DesignPatterns.Creational.Builder;
 using DesignPatterns.Creational.FactoryMethod;
 using DesignPatterns.Creational.Prototype;
 using DesignPatterns.Creational.Singleton;
 using DesignPatterns.Structural.Adapter;
 using DesignPatterns.Structural.Bridge;
+using DesignPatterns.Structural.Flyweight;
 using DesignPatterns.Utils.Display;
 using Spectre.Console;
 
-
 MainTitle();
 
-// Loading
-AnsiConsole.Status()
-    .Start("Loading...", ctx =>
+// Loading screen
+ShowLoadingScreen("Loading...", "TTD Consulting", 1500, 2000);
+
+var patternGroups = new Dictionary<string, Dictionary<string, Action>>
+{
     {
-        Thread.Sleep(1500);
+        "Creational", new Dictionary<string, Action>
+        {
+            { "Factory Method", RunFactoryMethod },
+            { "Abstract Factory", RunAbstractFactory },
+            { "Builder", RunBuilderFactory },
+            { "Prototype", RunPrototypeFactory },
+            { "Singleton", RunSingletonFactory }
+        }
+    },
+    {
+        "Structural", new Dictionary<string, Action>
+        {
+            { "Adapter", RunAdapterFactory },
+            { "Bridge", RunBridgeFactory },
+            { "Flyweight", RunFlyweightFactory }
+        }
+    }
+};
 
-        ctx.Status("TTD Consulting");
-        ctx.Spinner(Spinner.Known.Star);
-        ctx.SpinnerStyle(Style.Parse("green"));
-
-        AnsiConsole.MarkupLine("Loading...");
-        Thread.Sleep(2000);
-    });
-
-var exit = false;
+bool exit = false;
 
 while (!exit)
 {
     Console.Clear();
-
     MainTitle();
-    //var rule = new Rule("[red]Creational[/]");
-    //rule.Justification = Justify.Center;
-    //AnsiConsole.Write(rule);
 
-    var choice = AnsiConsole.Prompt(
+    // First menu: Choose a pattern group (Creational/Structural)
+    var groupChoice = AnsiConsole.Prompt(
         new SelectionPrompt<string>()
-            .Title("Please choose pattern to run:")
+            .Title("Please choose a pattern group:")
             .PageSize(10)
-            .AddChoices(new[] {
-                "Factory Method","Abstract Factory","Builder","Prototype","Singleton","Adapter", "Exit"
-            }));
+            .AddChoices(patternGroups.Keys.Append("Exit").ToArray()));
 
-    switch (choice)
+    if (groupChoice == "Exit")
     {
-        case "Factory Method":
-            RunFactoryMethod();
-            break;
-        case "Abstract Factory":
-            RunAbstractFactory();
-            break;
-        case "Builder":
-            RunBuilderFactory();
-            break;
-        case "Prototype":
-            RunPrototypeFactory();
-            break;
-        case "Singleton":
-            RunSingletonFactory();
-            break;
-        case "Adapter":
-            RunAdapterFactory();
-            break;
-        case "Bridge":
-            RunBridgeFactory();
-            break;
-        case "Exit":
-            exit = true;
-            break;
-        default:
-            AnsiConsole.Markup("[red]Invalid option, please try again.[/]");
-            break;
+        exit = true;
     }
+    else if (patternGroups.ContainsKey(groupChoice))
+    {
+        // Second menu: Choose a specific pattern within the chosen group
+        var patternChoice = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+                .Title($"Please choose a {groupChoice} pattern to run:")
+                .PageSize(10)
+                .AddChoices(patternGroups[groupChoice].Keys.Append("Back").ToArray()));
 
+        if (patternChoice == "Back")
+        {
+            continue;
+        }
+        else if (patternGroups[groupChoice].ContainsKey(patternChoice))
+        {
+            patternGroups[groupChoice][patternChoice]();
+        }
+        else
+        {
+            AnsiConsole.Markup("[red]Invalid option, please try again.[/]");
+        }
+    }
+    else
+    {
+        AnsiConsole.Markup("[red]Invalid option, please try again.[/]");
+    }
 }
 
 AnsiConsole.Markup("[green]See you soon. Goodbye![/]");
 
+// Utility methods
 void MainTitle()
 {
     AnsiConsole.Write(
@@ -88,173 +93,89 @@ void MainTitle()
             .Color(Color.Cyan1));
 }
 
+void ShowLoadingScreen(string initialMessage, string statusMessage, int initialDelay, int finalDelay)
+{
+    AnsiConsole.Status()
+        .Start(initialMessage, ctx =>
+        {
+            Thread.Sleep(initialDelay);
+            ctx.Status(statusMessage);
+            ctx.Spinner(Spinner.Known.Star);
+            ctx.SpinnerStyle(Style.Parse("green"));
+            AnsiConsole.MarkupLine("Loading...");
+            Thread.Sleep(finalDelay);
+        });
+}
+
+// IPattern-specific run methods
 void RunFactoryMethod()
 {
-    var runFactoryMethodExample = new FactoryMethod(new ConsoleOutput());
-    var exit = false;
-    while (!exit)
-    {
-        var policyType = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-                .Title("Please choose type of insurance policy:")
-                .PageSize(10)
-                .AddChoices(new[] {
-                    "Health","Life","Vehicle", "Exit"
-                }));
-        if (!string.IsNullOrEmpty(policyType))
-        {
-            if (policyType.ToLower() == "exit")
-            {
-                exit = true;
-                break;
-            }
-            runFactoryMethodExample.Run(policyType);
-        }
-    }
+    RunPattern(new FactoryMethod(new ConsoleOutput()), "Please choose type of insurance policy:", new[] { "Health", "Life", "Vehicle" });
 }
+
 void RunAbstractFactory()
 {
-    var abstractFactory = new AbstractFactory(new ConsoleOutput());
-    var exit = false;
-    while (!exit)
-    {
-        var option = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-                .Title("Please choose type of insurance policy:")
-                .PageSize(10)
-                .AddChoices(new[] {
-                    "Individual","Corporate", "Exit"
-                }));
-        if (!string.IsNullOrEmpty(option))
-        {
-            if (option.ToLower() == "exit")
-            {
-                exit = true;
-                break;
-            }
-            abstractFactory.Run(option);
-        }
-    }
+    RunPattern(new AbstractFactory(new ConsoleOutput()), "Please choose type of insurance policy:", new[] { "Individual", "Corporate" });
 }
+
 void RunBuilderFactory()
 {
-    var builder = new Builder(new ConsoleOutput());
-    var exit = false;
-    while (!exit)
-    {
-        var option = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-                .Title("Please choose type of insurance policy:")
-                .PageSize(10)
-                .AddChoices(new[] {
-                    "Comprehensive","Basic", "Exit"
-                }));
-        if (!string.IsNullOrEmpty(option))
-        {
-            if (option.ToLower() == "exit")
-            {
-                exit = true;
-                break;
-            }
-            builder.Run(option);
-        }
-    }
+    RunPattern(new Builder(new ConsoleOutput()), "Please choose type of insurance policy:", new[] { "Comprehensive", "Basic" });
 }
 
 void RunPrototypeFactory()
 {
-    var prototype = new Prototype(new ConsoleOutput());
-    var exit = false;
-    while (!exit)
-    {
-        var option = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-                .Title("Please choose option:")
-                .PageSize(10)
-                .AddChoices(new[] {
-                    "Start", "Exit"
-                }));
-        if (!string.IsNullOrEmpty(option))
-        {
-            if (option.ToLower() == "exit")
-            {
-                exit = true;
-                break;
-            }
-            prototype.Run();
-        }
-    }
-}
-void RunSingletonFactory()
-{
-    var singleton = new Singleton(new ConsoleOutput());
-    var exit = false;
-    while (!exit)
-    {
-        var option = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-                .Title("Please choose option:")
-                .PageSize(10)
-                .AddChoices(new[] {
-                    "Start", "Exit"
-                }));
-        if (!string.IsNullOrEmpty(option))
-        {
-            if (option.ToLower() == "exit")
-            {
-                exit = true;
-                break;
-            }
-            singleton.Run();
-        }
-    }
-}
-void RunAdapterFactory()
-{
-    var adapter = new Adapter(new ConsoleOutput());
-    var exit = false;
-    while (!exit)
-    {
-        var option = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-                .Title("Please choose option:")
-                .PageSize(10)
-                .AddChoices(new[] {
-                    "Start", "Exit"
-                }));
-        if (!string.IsNullOrEmpty(option))
-        {
-            if (option.ToLower() == "exit")
-            {
-                exit = true;
-                break;
-            }
-            adapter.Run();
-        }
-    }
-}
-void RunBridgeFactory()
-{
-    var bridge = new Bridge(new ConsoleOutput());
-    var exit = false;
-    while (!exit)
-    {
-        var option = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-                .Title("Please choose option:")
-                .PageSize(10)
-                .AddChoices(new[] {
-                    "Start", "Exit"
-                }));
-        if (!string.IsNullOrEmpty(option))
-        {
-            if (option.ToLower() == "exit")
-            {
-                exit = true;
-                break;
-            }
-            bridge.Run();
-        }
-    }
+    RunPattern(new Prototype(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
 }
 
+void RunSingletonFactory()
+{
+    RunPattern(new Singleton(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunAdapterFactory()
+{
+    RunPattern(new Adapter(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunBridgeFactory()
+{
+    RunPattern(new Bridge(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunFlyweightFactory()
+{
+    RunPattern(new Flyweight(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+// Helper method to generalize pattern execution
+void RunPattern(object pattern, string promptTitle, string[] options)
+{
+    bool exit = false;
+    while (!exit)
+    {
+        var option = AnsiConsole.Prompt(
+            new SelectionPrompt<string>()
+                .Title(promptTitle)
+                .PageSize(10)
+                .AddChoices(options.Append("Exit").ToArray()));
+
+        if (option.ToLower() == "exit")
+        {
+            exit = true;
+        }
+        else
+        {
+            dynamic dynamicPattern = pattern;
+            if (string.IsNullOrEmpty(option))
+            {
+
+                dynamicPattern.Run(option);
+            }
+            else
+            {
+                dynamicPattern.Run();
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@ using NSubstitute;
 
 namespace DesignPatterns.Structural.Tests;
 
-public class InsurancePolicyTests
+public class InsurancePolicyBridgeTests
 {
     [Test]
     public void ShouldIssueHealthPolicyWithProviderA()
