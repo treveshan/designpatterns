@@ -33,7 +33,7 @@ jobs:
         dotnet test src --no-restore --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./coverage/
 
     - name: Report coverage
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: coverage-report
         path: src/**/coverage.cobertura.xml
