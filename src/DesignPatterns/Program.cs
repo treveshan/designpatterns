@@ -1,4 +1,5 @@
-﻿using DesignPatterns.Creational.AbstractFactory;
+﻿using DesignPatterns.Behavioral.ChainOfResponsibility;
+using DesignPatterns.Creational.AbstractFactory;
 using DesignPatterns.Creational.Builder;
 using DesignPatterns.Creational.FactoryMethod;
 using DesignPatterns.Creational.Prototype;
@@ -36,6 +37,12 @@ var patternGroups = new Dictionary<string, Dictionary<string, Action>>
             { "Flyweight", RunFlyweightFactory },
             { "Composite", RunCompositeFactory },
             { "Decorator", RunDecoratorFactory }
+        }
+    },
+    {
+        "Behavioral", new Dictionary<string, Action>
+        {
+            { "ChainOfResponsibility", RunChainOfResponsibilityFactory },
         }
     }
 };
@@ -160,6 +167,11 @@ void RunCompositeFactory()
 void RunDecoratorFactory()
 {
     RunPattern(new Decorator(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunChainOfResponsibilityFactory()
+{
+    RunPattern(new ChainOfResponsibility(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
 }
 
 // Helper method to generalize pattern execution

@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Creational\DesignPatterns.Creational.csproj" />
     <ProjectReference Include="..\DesignPatterns.Adapter\DesignPatterns.Structural.csproj" />
+    <ProjectReference Include="..\DesignPatterns.Behavioral\DesignPatterns.Behavioral.csproj" />
   </ItemGroup>
 
 </Project>

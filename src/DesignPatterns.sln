@@ -11,9 +11,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Creational.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Utils", "DesignPatterns.Utils\DesignPatterns.Utils.csproj", "{E7F7EA23-4F09-4D69-912C-B455678F21E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Structural", "DesignPatterns.Adapter\DesignPatterns.Structural.csproj", "{E6BD8BFE-A473-4969-AAEC-AE47424E2E9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Structural", "DesignPatterns.Adapter\DesignPatterns.Structural.csproj", "{E6BD8BFE-A473-4969-AAEC-AE47424E2E9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Structural.Tests", "DesignPatterns.Structural.Tests\DesignPatterns.Structural.Tests.csproj", "{A139D247-4150-49D8-B4C8-DF764A0733FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Structural.Tests", "DesignPatterns.Structural.Tests\DesignPatterns.Structural.Tests.csproj", "{A139D247-4150-49D8-B4C8-DF764A0733FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Behavioral", "DesignPatterns.Behavioral\DesignPatterns.Behavioral.csproj", "{C0FCD12C-3332-4DA0-BCC9-32E0A24F4DA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Behavioral.Tests", "DesignPatterns.Behavioral.Tests\DesignPatterns.Behavioral.Tests.csproj", "{4DBD2278-214F-4324-8B4F-6E4EC709C63B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D24FCA80-E7D1-4D2C-A4B8-98F16151A638}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +54,14 @@ Global
 		{A139D247-4150-49D8-B4C8-DF764A0733FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A139D247-4150-49D8-B4C8-DF764A0733FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A139D247-4150-49D8-B4C8-DF764A0733FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0FCD12C-3332-4DA0-BCC9-32E0A24F4DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0FCD12C-3332-4DA0-BCC9-32E0A24F4DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0FCD12C-3332-4DA0-BCC9-32E0A24F4DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0FCD12C-3332-4DA0-BCC9-32E0A24F4DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DBD2278-214F-4324-8B4F-6E4EC709C63B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DBD2278-214F-4324-8B4F-6E4EC709C63B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DBD2278-214F-4324-8B4F-6E4EC709C63B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DBD2278-214F-4324-8B4F-6E4EC709C63B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

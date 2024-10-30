@@ -32,7 +32,7 @@ This project demonstrates various design patterns implemented in C#. Design patt
    - [ ] Proxy
 
 3. **Behavioral Patterns**
-   - [ ] Chain of Responsibility
+   - [X] Chain of Responsibility
    - [ ] Command
    - [ ] Interpreter
    - [ ] Iterator
