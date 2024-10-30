@@ -8,6 +8,7 @@ using DesignPatterns.Structural.Adapter;
 using DesignPatterns.Structural.Bridge;
 using DesignPatterns.Structural.Composite;
 using DesignPatterns.Structural.Decorator;
+using DesignPatterns.Structural.Facade;
 using DesignPatterns.Structural.Flyweight;
 using DesignPatterns.Utils.Display;
 using Spectre.Console;
@@ -36,7 +37,8 @@ var patternGroups = new Dictionary<string, Dictionary<string, Action>>
             { "Bridge", RunBridgeFactory },
             { "Flyweight", RunFlyweightFactory },
             { "Composite", RunCompositeFactory },
-            { "Decorator", RunDecoratorFactory }
+            { "Decorator", RunDecoratorFactory },
+            { "Facade", RunFacadeFactory },
         }
     },
     {
@@ -172,6 +174,11 @@ void RunDecoratorFactory()
 void RunChainOfResponsibilityFactory()
 {
     RunPattern(new ChainOfResponsibility(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunFacadeFactory()
+{
+    RunPattern(new Facade(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
 }
 
 // Helper method to generalize pattern execution

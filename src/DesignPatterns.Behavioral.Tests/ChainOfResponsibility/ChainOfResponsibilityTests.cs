@@ -8,7 +8,7 @@ using FluentAssertions;
 
 namespace DesignPatterns.Behavioral.Tests.ChainOfResponsibility
 {
-    public class ClaimHandlerTests
+    public class ChainOfResponsibilityTests
     {
         [Test]
         public void ClaimAdminOne_ShouldApproveSmallClaim()
