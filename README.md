@@ -29,20 +29,20 @@ This project demonstrates various design patterns implemented in C#. Design patt
    - [X] Decorator
    - [X] Facade
    - [X] Flyweight
-   - [ ] Proxy
+   - [X] Proxy
 
 3. **Behavioral Patterns**
    - [X] Chain of Responsibility
-   - [ ] Command
-   - [ ] Interpreter
-   - [ ] Iterator
-   - [ ] Mediator
-   - [ ] Memento
-   - [ ] Observer
-   - [ ] State
-   - [ ] Strategy
-   - [ ] Template Method
-   - [ ] Visitor
+   - [X] Command
+   - [X] Interpreter
+   - [X] Iterator
+   - [X] Mediator
+   - [X] Memento
+   - [X] Observer
+   - [X] State
+   - [X] Strategy
+   - [X] Template Method
+   - [X] Visitor
 
 ## Getting Started
 
