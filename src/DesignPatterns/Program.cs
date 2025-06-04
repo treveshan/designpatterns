@@ -1,4 +1,14 @@
 ﻿using DesignPatterns.Behavioral.ChainOfResponsibility;
+using DesignPatterns.Behavioral.Command;
+using DesignPatterns.Behavioral.Interpreter;
+using DesignPatterns.Behavioral.Iterator;
+using DesignPatterns.Behavioral.Mediator;
+using DesignPatterns.Behavioral.Memento;
+using DesignPatterns.Behavioral.Observer;
+using DesignPatterns.Behavioral.State;
+using DesignPatterns.Behavioral.Strategy;
+using DesignPatterns.Behavioral.TemplateMethod;
+using DesignPatterns.Behavioral.Visitor;
 using DesignPatterns.Creational.AbstractFactory;
 using DesignPatterns.Creational.Builder;
 using DesignPatterns.Creational.FactoryMethod;
@@ -10,6 +20,7 @@ using DesignPatterns.Structural.Composite;
 using DesignPatterns.Structural.Decorator;
 using DesignPatterns.Structural.Facade;
 using DesignPatterns.Structural.Flyweight;
+using DesignPatterns.Structural.Proxy;
 using DesignPatterns.Utils.Display;
 using Spectre.Console;
 
@@ -39,12 +50,23 @@ var patternGroups = new Dictionary<string, Dictionary<string, Action>>
             { "Composite", RunCompositeFactory },
             { "Decorator", RunDecoratorFactory },
             { "Facade", RunFacadeFactory },
+            { "Proxy", RunProxyFactory },
         }
     },
     {
         "Behavioral", new Dictionary<string, Action>
         {
             { "ChainOfResponsibility", RunChainOfResponsibilityFactory },
+            { "Command", RunCommandFactory },
+            { "Interpreter", RunInterpreterFactory },
+            { "Iterator", RunIteratorFactory },
+            { "Mediator", RunMediatorFactory },
+            { "Memento", RunMementoFactory },
+            { "Observer", RunObserverFactory },
+            { "State", RunStateFactory },
+            { "Strategy", RunStrategyFactory },
+            { "Template Method", RunTemplateMethodFactory },
+            { "Visitor", RunVisitorFactory },
         }
     }
 };
@@ -179,6 +201,61 @@ void RunChainOfResponsibilityFactory()
 void RunFacadeFactory()
 {
     RunPattern(new Facade(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunProxyFactory()
+{
+    RunPattern(new Proxy(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunCommandFactory()
+{
+    RunPattern(new Command(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunInterpreterFactory()
+{
+    RunPattern(new Interpreter(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunIteratorFactory()
+{
+    RunPattern(new Iterator(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunMediatorFactory()
+{
+    RunPattern(new Mediator(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunMementoFactory()
+{
+    RunPattern(new Memento(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunObserverFactory()
+{
+    RunPattern(new Observer(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunStateFactory()
+{
+    RunPattern(new State(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunStrategyFactory()
+{
+    RunPattern(new Strategy(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunTemplateMethodFactory()
+{
+    RunPattern(new TemplateMethod(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunVisitorFactory()
+{
+    RunPattern(new Visitor(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
 }
 
 // Helper method to generalize pattern execution
