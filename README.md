@@ -20,6 +20,7 @@ This project demonstrates various design patterns implemented in C#. Design patt
    - [X] Factory Method
    - [X] Abstract Factory
    - [X] Builder
+   - [X] Builder (TypeScript version in `ts/`)
    - [X] Prototype
 
 2. **Structural Patterns**
