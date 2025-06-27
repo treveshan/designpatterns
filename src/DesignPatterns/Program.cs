@@ -10,6 +10,7 @@ using DesignPatterns.Structural.Composite;
 using DesignPatterns.Structural.Decorator;
 using DesignPatterns.Structural.Facade;
 using DesignPatterns.Structural.Flyweight;
+using DesignPatterns.Structural.Proxy;
 using DesignPatterns.Utils.Display;
 using Spectre.Console;
 
@@ -39,6 +40,7 @@ var patternGroups = new Dictionary<string, Dictionary<string, Action>>
             { "Composite", RunCompositeFactory },
             { "Decorator", RunDecoratorFactory },
             { "Facade", RunFacadeFactory },
+            { "Proxy", RunProxyFactory },
         }
     },
     {
@@ -179,6 +181,11 @@ void RunChainOfResponsibilityFactory()
 void RunFacadeFactory()
 {
     RunPattern(new Facade(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
+}
+
+void RunProxyFactory()
+{
+    RunPattern(new Proxy(new ConsoleOutput()), "Please choose option:", new[] { "Start" });
 }
 
 // Helper method to generalize pattern execution
